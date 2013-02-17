@@ -2,7 +2,9 @@ var App = Ember.Application.create();
 
 // Router
 App.Router.map(function() {
-    this.resource('tables');  // Match '#/tables
+    this.resource('tables', function() {
+        this.resource('table', {path:':table_id'});
+    });
 });
 
 
