@@ -36,6 +36,9 @@
             <div class="four columns" id="tables">
                 {{ partial "tableMenu" }}
             </div>
+            <div class="eight columns" id="order">
+                {{ outlet }}
+            </div>
         </div>
     </script>
 
@@ -44,6 +47,28 @@
         {{#each table in controller}}
             {{#linkTo "table" table class="panel six columns"}}{{ table.id }}{{/linkTo}}
         {{/each}}
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="table">
+        <div class="row">
+            <div class="three columns">
+                {{ render "food" }}
+            </div>
+            <div class="nine columns">
+                <h2>Table <span>{{id}}</span></h2>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-handlebars" data-template-name="food">
+      <ul id="menu">
+      {{#each controller}}
+          <li>
+              <img {{bindAttr src="imageUrl"}}>
+              <p>{{ name }}</p>
+          </li>
+      {{/each}}
+      </ul>
     </script>
 
 
